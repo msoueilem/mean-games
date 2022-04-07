@@ -1,19 +1,24 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Game } from './games/games.component'; 
+import { Observable } from 'rxjs';
+import { Game } from './games/games.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GamesDataService {
 
-  constructor() {
-    
-    }
-    getGames(): Array<Game>
-    {
-      let games = new Array<Game>(2)
-      games[0] = new Game("1","Catan",39.00)
-      games[1] = new Game("2","King of you",39.00)
-    return games
-    }
+  baseUrl: String = "http://localhost:4444/api"
+  constructor(private http: HttpClient) { }
+  
+  public getGames(): Observable<Game[]> {
+    return this.http.get<Game[]>(this.baseUrl + '/games');
+  }
+  public getGame(gameId: String): Observable<Game> {
+    return this.http.get<Game>(this.baseUrl + '/games/' + gameId);
+  }
+  public deleteOne(gameId:string){
+    return this.http.delete<Game>(this.baseUrl + '/games/' + gameId);
+  }
+
 }

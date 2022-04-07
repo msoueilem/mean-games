@@ -1,3 +1,8 @@
 <ul>
-    <li *ngFor="let game of games">{{game.title}}</li>
+    <li *ngFor="let game of games">
+        <a routerLink="game/{{game._id}}">
+            {{game.title}}
+        </a>
+        <button routerLink="delete">Delete</button>
+    </li>
 </ul>
