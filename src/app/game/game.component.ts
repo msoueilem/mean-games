@@ -11,12 +11,13 @@ import { Game } from '../games/games.component';
 export class GameComponent implements OnInit {
 
   game!: Game
-  constructor(private route: ActivatedRoute, private gamesService: GamesDataService) { }
+  constructor(private route: ActivatedRoute, private gamesService: GamesDataService) { 
+    this.game = new Game('','',0)
+  }
 
   ngOnInit(): void {
     const gameId = this.route.snapshot.params["gameId"]
     this.gamesService.getGame(gameId).subscribe(game => this.game = game)
-    console.log(gameId)
   }
 
 }

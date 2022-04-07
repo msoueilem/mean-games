@@ -3,6 +3,7 @@
         <a routerLink="game/{{game._id}}">
             {{game.title}}
         </a>
-        <button routerLink="delete">Delete</button>
+        <!-- <app-delete-game [gameId=game._id></app-delete-game> -->
+        <app-delete-game [gameId] = game._id></app-delete-game>
     </li>
 </ul>

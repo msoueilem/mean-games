@@ -12,6 +12,9 @@ import { GamesComponent } from './games/games.component';
 import { GameComponent } from './game/game.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { DeleteGameComponent } from './delete-game/delete-game.component';
+import { ParentComponent } from './parent/parent.component';
+import { ChildComponent } from './child/child.component';
+import { RateComponent } from './rate/rate.component';
 
 
 @NgModule({
@@ -22,7 +25,10 @@ import { DeleteGameComponent } from './delete-game/delete-game.component';
     HomeComponent,
     GamesComponent,
     GameComponent,
-    DeleteGameComponent
+    DeleteGameComponent,
+    ParentComponent,
+    ChildComponent,
+    RateComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +41,10 @@ import { DeleteGameComponent } from './delete-game/delete-game.component';
       },
       {
         path: "games/game/:gameId",
+        component: GameComponent
+      },
+      {
+        path: "games/:gameId",
         component: GameComponent
       },
       {

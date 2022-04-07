@@ -14,11 +14,12 @@ export class GamesDataService {
   public getGames(): Observable<Game[]> {
     return this.http.get<Game[]>(this.baseUrl + '/games');
   }
+
   public getGame(gameId: String): Observable<Game> {
     return this.http.get<Game>(this.baseUrl + '/games/' + gameId);
   }
-  public deleteOne(gameId:string){
-    return this.http.delete<Game>(this.baseUrl + '/games/' + gameId);
-  }
 
+  public deleteOne(gameId:string){
+    return this.http.delete(this.baseUrl + '/games/' + gameId)
+  }
 }

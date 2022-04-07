@@ -1,11 +1,11 @@
 
-<h1> {{game.title}} - {{game.rate}} </h1>
+<h1> {{game.title}} - <app-rate [rate] = game.rate></app-rate> </h1>
 <br>
 Year: {{game.year}} <br>
 Price: {{game.price}} <br>
 Minimum Players: {{game.minPlayers}} <br>
 Maximum Players: {{game.maxPlayers}} <br>
 Minimum Age: {{game.minAge}} <br>
-<button routerLink="delete">Delete</button>
+<app-delete-game [gameId] = game._id></app-delete-game>
 
 
