@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { observable, Observable } from 'rxjs';
 import { GamesDataService } from '../games-data.service';
 export class Game {
   #_id!: string;
@@ -39,7 +40,16 @@ export class GamesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.gamesService.getGames().subscribe(games => this.games = games)
+    // this.gamesService.getGames().subscribe(games=>{},err=>{})
+    this.gamesService.getGames().subscribe(
+      {
+        next: games => {
+          this.games = games
+        },
+        error: err => console.log("Service Error:",err),
+        complete: () => console.log("Done")
+      }
+    )
   }
 
 }
