@@ -17,7 +17,15 @@ export class GameComponent implements OnInit {
 
   ngOnInit(): void {
     const gameId = this.route.snapshot.params["gameId"]
-    this.gamesService.getGame(gameId).subscribe(game => this.game = game)
+    this.gamesService.getGame(gameId).subscribe(
+      {
+        next: game => {
+          this.game = game
+        },
+        error: err => console.log("Service Error:", err),
+        complete: () => console.log(this.game)
+      }
+    )
   }
 
 }

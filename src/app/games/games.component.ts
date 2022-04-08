@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { observable, Observable } from 'rxjs';
+import {  Router } from '@angular/router';
 import { GamesDataService } from '../games-data.service';
 export class Game {
   #_id!: string;
@@ -35,21 +34,35 @@ export class Game {
 })
 export class GamesComponent implements OnInit {
 
-  games: Game[] = []
-  constructor(private route: ActivatedRoute, private gamesService: GamesDataService) {
+  games!: Game[]
+  constructor(private route: Router, private gamesService: GamesDataService) {
   }
 
   ngOnInit(): void {
+    // this.fechGames()
     // this.gamesService.getGames().subscribe(games=>{},err=>{})
     this.gamesService.getGames().subscribe(
       {
         next: games => {
           this.games = games
         },
-        error: err => console.log("Service Error:",err),
-        complete: () => console.log("Done")
+        error: err => console.log("Service Error:", err),
+        complete: () => console.log("Games fetched")
       }
     )
   }
+  
+  // fechGames():void {
+  //   this.gamesService.getGames().subscribe(
+  //     {
+  //       next: games => {
+  //         this.games = games
+  //       },
+  //       error: err => console.log("Service Error:", err),
+  //       complete: () => console.log("Games fetched")
+  //     }
+  //   )
+  // }
 
+  
 }

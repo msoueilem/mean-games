@@ -1,0 +1,48 @@
+<h1>Add new game</h1> <br>
+<form [formGroup] = "addGameForm" (ngSubmit) = "addGame()">
+    <div>
+      <label for="title">
+        Title:
+        <input  type="text" formControlName="title" placeholder="Game title">
+      </label>
+    </div>
+    <div>
+      <label for="rate">
+        Rate:
+        <input type="number" formControlName="rate" placeholder="Game rate">
+      </label>
+    </div>
+    <div>
+      <label for="year">
+        Year:
+        <input type="number" formControlName="year" placeholder="Year">
+      </label>
+    </div>
+    <div>
+      <label for="price">
+        Price:
+        <input type="number" formControlName="price" placeholder="Price">
+      </label>
+    </div>
+    <div>
+        <label for="maxPlayers">
+          Max Players:
+          <input type="number" formControlName="maxPlayers" placeholder="Max Players">
+        </label>
+      </div>
+      <div>
+        <label for="price">
+          Min Players:
+          <input type="number" formControlName="minPlayers" placeholder="Min Players">
+        </label>
+      </div>
+      <div>
+        <label for="minAge">
+          Min Age:
+          <input type="number" formControlName="minAge" placeholder="Min Age">
+        </label>
+      </div>
+    
+    <button type="submit">Add Game</button>
+  </form>
+  
